@@ -1,4 +1,5 @@
 #1、数据类型注意点
+
 Pyton中没有double、long类型
 
 查看用什么数据类型用type()
