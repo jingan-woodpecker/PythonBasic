@@ -47,8 +47,23 @@ print("我的年龄是：%s岁，我的名字叫：%s" % (age + age_1, name))
 money = 30
 print("我还剩下金额：%04d" % (money))
 
+#输出的数字包含两位小数，如果没有用0补充
+w = 3.1415926
+print("圆周率是：%.2f"%(w))
+print("今晚中奖的概率是：%d%%"%(w))
+
 # 总结：1、多个变量替换需要加小括号，并且每个变量用逗号隔开
-#      2、%d %s : d数值的变量替换， s所有类型的变量替换
+#       2、%d %s : d数值的变量替换， s所有类型的变量替换
+#       3、若要显示"%"，则需要再添加两个"%%"进行转义
+```
+
+```python
+#小明的成绩从去年的72分提升到了今年的85分，请计算小明成绩提升的百分点，
+# 并用字符串格式化显示出'xx.x%'，只保留小数点后1位：
+before_score = 72
+now_score = 85
+rising_percentage_point = (now_score-before_score)/now_score*100
+print("小明成绩提升的百分点是：%.1f%%"%(rising_percentage_point))
 ```
 
 
