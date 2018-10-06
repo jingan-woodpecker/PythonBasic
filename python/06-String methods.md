@@ -169,3 +169,10 @@ print("--".join(lines))
 #人生苦短我要学python
 #人生--苦短--我要学python
 ```
+
+    面试题：给定一个字符串，只要有制表符、换行符的位置都分隔开
+    
+```python
+lines = "人生\n苦短，\t我要学\tpython\n2018/1/1"
+print(lines.split())
+```
