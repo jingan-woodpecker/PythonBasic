@@ -1,0 +1,125 @@
+body {
+	font-size: 14px;
+	font-family: "Arial", "微软雅黑", "宋体";
+	color: #444866;
+	background-color: #F0F3EF;;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+
+/*start header部分*/
+.header {
+	width: 100%;
+	background-color: #e3e4e5;
+	border-bottom: 1px solid #ddd;	
+}
+
+.header .header_w {
+	width: 1190px;
+	height: 30px;
+	color: #999;
+	margin: 0 auto;
+	line-height: 30px;
+	/*border: 1px solid red;*/
+}
+
+.header .header_w li.address_area {
+	float: left;
+	position: relative;
+	margin-left: 200px;
+}
+
+.header .header_w li .address_beijing {
+	float: left;
+	height: 28px;
+	line-height: 28px;
+	padding: 0 7px;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.header .header_w li .address_icon {
+	top:7px;
+	left: 2px;
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	display: inline-block;
+	background: url(../img/images/bj01.png) no-repeat; 
+}
+
+.header .header_w li span.address_text {
+	line-height: 28px;
+	font-size: 12px;
+	margin-left: 10px;
+}
+
+.header .right_header .fr {
+	float: right;
+}
+
+.header .right_header .fr li {
+	float: left;
+	padding: 0 7px;
+}
+
+.header .right_header .fr li.first_login {
+	margin-right: 9px;
+}
+
+.header .right_header .fr li a {
+	color: #999;
+	font-size: 12px;
+}
+
+.header .right_header .fr li a:hover {
+	color: #f10215;
+}
+
+.header .right_header .fr li a.style_red {
+	color: #f10215;
+}
+
+.header .right_header .fr .line {
+	width: 1px;
+	height: 10px;
+	_font-size: 0;
+	 padding: 0;
+	overflow: hidden;
+	margin: 11px 5px 0;
+	background-color: #ccc;
+    /*ie6不支持小于12px的盒子，解决办法：加上_font-size: 0;*/
+   
+}
+
+.header .right_header .fr .daosanjiao {
+	position: relative;
+	padding: 0 20px 0 10px;
+
+}
+
+.header .right_header .fr .daosanjiao i {
+	font: 400 13px "宋体";
+    position: absolute;
+    width: 12px;
+    height: 7px;
+    top: 15px;
+    right: 6px;
+    overflow: hidden;
+}
+
+.header .right_header .fr .daosanjiao span {
+	position: absolute;
+    top: -8px;
+    left: 0;
+}
+
+
+/*end header部分
+
+
+
