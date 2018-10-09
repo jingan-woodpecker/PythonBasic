@@ -4,38 +4,50 @@
 不可变类型：数值、字符串、元组
 
 ```python
-a = 100
+#不可变类型的值是不可变的
+a = "abc"
 print(id(a))
-
-a = "字符串"
+a.replace("a","A")
 print(id(a))
 
 print(a)
-"""
-结果如下:因为数值是不可变类型，所以它由刚开始的a指向100，到a指向"字符串",最后打印结果为"字符串"，
-但a=100并没有消失，只是换了一个指向，指向了另一个内存地址；如果长时间没有指向a=100后，python则会回收
-1605139008
-39687920
-字符串
-"""
+
+#上面的修改只有用一个值接收(比如：b=a.replace("a","A")打印b结果才是"Abc",打印a还是原来的结果
+'''
+打印结果如下：  
+30891232
+30891232
+abc
+'''
 ```
+![不可变类型](../images/dict01.png)
 
 ```python
-a = [1, 4, 5]
+a = [1, 3, 4]
+b = a
 print(id(a))
-a.append(6)
+print(id(b))
 
-print(id(a))
+b += [5, 7]
+
 print(a)
+print(b)
 """
 打印结果如下：
-39301704
-39301704
-[1, 4, 5, 6]
+39367240
+39367240
 
-可变类型列表，经过修改后，只是改变了内容，指向是不变的即内存地址、id是不变的。
+[1, 3, 4, 5, 7]
+[1, 3, 4, 5, 7]
+
+可变类型列表，经过b += [5, 7]修改后，只是改变了内容，指向是不变的即内存地址、id是不变的。
+当只是b添加了列表[5, 7]后，a也会同时增加列表[5, 7]
+
+#注意:如果是b = b+[5, 7]会先计算b+[5,7]生成一个新的列表，b就会指向一个新的地址，这时a还是等于[1,3,4]
+#针对不可变类型a+=a <> a= a+b
 """
 ```
+![可变类型](../images/dict.png)
 
 ```python
 a = [1, 4, 5]
@@ -137,3 +149,55 @@ key为age,value为23
 key为sex,value为男
 '''
 ```
+
+```python
+print("*"*30)
+print("学生名字管理系统".center(50))
+print("输入1：添加学生")
+print("输入2：查找学生")
+print("输入3：修改学生")
+print("输入4：删除学生")
+print("输入5：查看所有学生")
+print("输入6：退出")
+
+stus = []
+while True:
+    operate = input("请输入你想要进行的操作:")
+    if operate == "1":
+        name = input("请输入添加的学生姓名:")
+        age = int(input("请输入添加的学生年龄:"))
+        sex = input("请输入添加的学生性别:")
+        #用字典存放每个学生的所有信息
+        stu = {}
+        stu["name"] = name
+        stu["age"] = age
+        stu["sex"] = sex
+        #将所有学生信息都添加到列表中
+        stus.append(stu)
+    if operate == "2":
+        name = input("请输入要查找的学生姓名:")
+        for item in stus:
+            if item["name"] == name:
+                print("%s\t%s\t%s\t"%(item["name"],item["age"],item["sex"]))
+                break  #整个循环终止
+        else: #注意这个eles的位置，考虑清楚逻辑错误和语法错误
+            print("该学生未找到")
+    if operate == "3":
+        pass
+    if operate == "4":
+        pass
+    if operate == "5":
+        print("序号\t姓名\t年龄\t性别")
+        for i,item in enumerate(stus,1):
+            print("%s\t%s\t%s\t%s\t"%(i,item["name"],item["age"],item["sex"]))
+    if operate == "6":
+        break
+```
+
+内置函数
+
+    cmp(item1,item2)     比较两个值 -----相等返回0，小于为-1，大于为1
+        在比较字典的时候，先比较键，再比较值；字符串比较ASCII值
+    max(item)            返回最大值
+    min(item)            返回最小值
+    del(item)            删除变量
