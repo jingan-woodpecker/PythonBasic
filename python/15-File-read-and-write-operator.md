@@ -86,3 +86,29 @@ dest_f.write(content)
 source_f.close()
 dest_f.close()
 ```
+
+4、文件的定位读写 
+
+    * 在读写文件的过程中，如果想知道当前的位置，可以使用tell()来获取
+ 
+```python
+new_file = open("test1.md" ,"w")
+new_file.write("python   java   php")
+#读取当前位置
+find =new_file.tell()
+
+new_file.close()
+```
+
+    * 如果在读写文件的过程中，需要从另外一个位置进行操作的话，可以使用seek()
+
+    seek(offset, from)有2个参数
+
+    offset:偏移量
+    from:方向
+        0:表示文件开头
+        1:表示当前位置
+        2:表示文件末尾
+
+
+
