@@ -119,12 +119,12 @@ property另一种简化的方式： 使用修饰器，且方法名和属性名�
 class TestClass(object):
     def __init__(self):
         self.__num = 100
-
+#方法名num和属性名num要一致
     @property
-    def num(self):  #方法名num和属性名要一致
+    def num(self):  #getter
         return self.__num
 
-    @num.setter
+    @num.setter    #setter
     def num(self , num):
         if num < 100:
             self.__num = num
