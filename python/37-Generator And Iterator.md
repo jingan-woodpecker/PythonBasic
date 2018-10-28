@@ -122,5 +122,60 @@ print(get_num.send("一定要传入内容"))
 '''
 ```
 
+迭代器
+
+    迭代是访问集合元素的一种方式，迭代器是一个可以记住遍历的位置的对象。
+    迭代器只能往前，不会后退
+    
+可迭代对象(Iterable)
+    
+    集合数据类型， 如list、tuple、dict、set、str等
+    生成器和带yield的generator function
+    
+如何判断对象可迭代？
+
+    先判断是否是可迭代的，只有是可迭代的再处理
+```python
+from collections import Iterable
+isinstance([],Iterable)
+#True    
+```
+
+迭代器：可以被next()函数调用并不断返回下一个值的对象称为迭代器
+    
+```python
+from collections import Iterable
+isinstance((x for x in range(10)),Iterable)
+```
+
+```python
+#只有生成器才是迭代器
+a = [1,2,3,4]
+next(a)
+'''
+TypeError: 'list' object is not an iterator
+'''
+```
+如何将字典、元组、列表等可迭代对象变成迭代器
+    
+    iter()函数：可将迭代对象转换成迭代器
+    导入Iterator模块判断是不是生成器
+    
+```python
+from collections import Iterator
+a = [1,2,3,4]
+it = iter(a)
+#判断是不是生成器
+print(isinstance(it,Iterator))
+print(next(it))
+'''
+True
+1
+'''
+```
+
+    总结：可迭代对象不一定是迭代器
+        
+
 
     
