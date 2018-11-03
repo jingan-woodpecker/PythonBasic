@@ -57,4 +57,208 @@ Hello Tom!
 
 4、查看线程数量
 
+    下面的程序中线程是交错执行的
+
+```python
+import threading
+from time import sleep,ctime
+
+def sing():
+    for i in range(3):
+        print("正在唱歌%s"%i)
+        sleep(1)
+
+def dance():
+    for i in range(3):
+        print("正在跳舞%s"%i)
+        sleep(1)
+
+if __name__ == "__main__":
+    print("--开始--:%s"%ctime())
+    #创建两个线程
+    t1 = threading.Thread(target=sing)
+    t2 = threading.Thread(target=dance)
+    t1.start()
+    t2.start()
+
+while True:
+    #把当前所有线程都枚举出来，即获取线程数量
+    length = len(threading.enumerate())
+    print("当前运行的线程数为：%s"%length)
+    #一个进程至少要有一个线程，不能出现等于0的情况
+    if length <= 1:
+        break
+    sleep(0.5)
+    
+'''
+--开始--:Sat Nov  3 08:56:18 2018
+正在唱歌0
+正在跳舞0
+当前运行的线程数为：3
+当前运行的线程数为：3
+正在唱歌1
+正在跳舞1
+当前运行的线程数为：3
+当前运行的线程数为：3
+正在唱歌2
+正在跳舞2
+当前运行的线程数为：3
+当前运行的线程数为：3
+当前运行的线程数为：1
+'''
+```
+
+5、线程的子类化
+
+    使用threading模块时，往往会定义一个新的子类class,只要继承
+    threading.Thread就可以了，然后重写run方法
+    
+```python
+import threading
+import time
+
+class MyThread(threading.Thread):
+    def run(self):
+        for i in range(3):
+            time.sleep(1)
+            #name属性中保存的是当前线程
+            msg = "I'm " + self.name + " @ "  +str(i)
+            print(msg)
+
+if __name__ == "__main__":
+    t = MyThread()
+    t.start()
+    
+'''
+I'm Thread-1 @ 0
+I'm Thread-1 @ 1
+I'm Thread-1 @ 2
+'''
+```
+
+6、线程的状态
+
+    多线程程序的执行顺序是不确定的。当执行到sleep语句时，线程被阻塞(Blocked)
+    到sleep结束后，线程进入就绪(Runnable)状态，等待调度，而线程调度将自行选
+    择一个线程执行，代码中只能保证每个线程都运行完整个run函数，但是线程的启
+    动顺序、run函数中每次循环的执行顺序都不能确定
+    
+![thread](../images/thread.png)
+
+    因访问某种资源，但资源还没准备好就会陷入阻塞状态
+    
+    资源准备好，但也不能马上执行，得先进入就绪状态，线程有优先级的
+    
+7、线程共享全局变量
+
+    在一个进程内的所有线程共享全局变量，能够在不适用其它方式的前提下
+    完成多线程之间的数据共享(这点优势比进程要好)
+    
+    缺点： 线程是对全局变量随意修改可能造成多线程之间对全局变量的混乱(即线程非安全)
+    
+```python
+from threading import Thread
+import time
+
+#搜索变量是先从局部变量开始，然后是闭包，全局变量，内建
+g_num = 100 #全局变量
+def work1():
+    global g_num
+    for i in range(3):
+        g_num += 1
+        print("---in work1, g_num is %s---"%g_num)
+        
+def work2():
+    print("---in work2, g_num is %s---" % g_num)
+
+if __name__ == "__main__":
+    print("主线程，g_num =%s"%g_num)
+    w1 = Thread(target=work1)
+    w1.start()
+    time.sleep(2)
+
+    w2 = Thread(target=work2)
+    w2.start()
+    
+'''
+主线程，g_num =100
+---in work1, g_num is 101---
+---in work1, g_num is 102---
+---in work1, g_num is 103---
+---in work2, g_num is 103---
+
+'''
+```  
+
+8、线程使用传参的方式使用全局变量  
+
+```python
+from threading import Thread
+import time
+
+#搜索变量是先从局部变量开始，然后是闭包，全局变量，内建
+g_num = 100 #全局变量
+def work1(num):
+    global g_num
+    for i in range(3):
+        num += 1
+        print("---in work1, g_num is %s---"%num)
+
+def work2(num):
+    #方法中操控的是局部变量，所以结果还是100
+    print("---in work2, g_num is %s---" % num)
+
+if __name__ == "__main__":
+    print("主线程，g_num =%s"%g_num)
+    w1 = Thread(target=work1,args=(g_num,))
+    w1.start()
+    time.sleep(2)
+
+    w2 = Thread(target=work2,args=(g_num,))
+    w2.start()
+
+'''
+主线程，g_num =100
+---in work1, g_num is 101---
+---in work1, g_num is 102---
+---in work1, g_num is 103---
+---in work2, g_num is 100---
+'''
+```
+
+    如果全局变量是列表
+    
+```python
+from threading import Thread
+import time
+
+#搜索变量是先从局部变量开始，然后是闭包，全局变量，内建
+g_num = [11,12,13] #全局变量
+def work1(num):
+    global g_num
+    for i in range(3):
+        num.append(44)
+        print("---in work1, g_num is %s---"%num)
+
+def work2(num):
+    #方法中操控的是局部变量，所以结果还是100
+    print("---in work2, g_num is %s---" % num)
+
+if __name__ == "__main__":
+    print("主线程，g_num =%s"%g_num)
+    w1 = Thread(target=work1,args=(g_num,))
+    w1.start()
+    time.sleep(2)
+
+    w2 = Thread(target=work2,args=(g_num,))
+    w2.start()
+    
+'''
+主线程，g_num =[11, 12, 13]
+---in work1, g_num is [11, 12, 13, 44]---
+---in work1, g_num is [11, 12, 13, 44, 44]---
+---in work1, g_num is [11, 12, 13, 44, 44, 44]---
+---in work2, g_num is [11, 12, 13, 44, 44, 44]---
+'''
+```
     
