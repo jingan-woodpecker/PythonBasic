@@ -6,7 +6,7 @@
 
 3、在终端输入代码git clone  https://github.com/jingan-woodpecker/PythonBasic.git
 
-![克隆http](../images/克隆http.png)
+![克隆http](../images/clone.png)
 
 4、等待克隆完成;
 
@@ -16,11 +16,13 @@
 
 1、切换到对应目录 cd PythonBasic
 
-2、提交文件或文件夹：git add Github使用总结
+2、先用 git status 看你更改了哪些文件；
 
-3、命名提交的文件或文件夹：git commit -m "Github使用总结"
+3、然后 git add 你想要提交的更改的文件 或者 git add . 所有的文件；
 
-4、推送到远程仓库：git push -u origin master
+4、再git commit -m ‘提交信息’；
+
+5、最后 git push origin master/你的分支 。
 
 三、markdown语法格式
 
