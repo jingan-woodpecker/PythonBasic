@@ -27,3 +27,7 @@
 三、markdown语法格式
 
 [markdown语法格式](https://www.cnblogs.com/alantao/p/8521929.html)
+
+四、已连接远程仓库，需拉取其它仓库到本地的方式
+
+	输入命令：git clone 仓库地址（例如：https://github.com/jingan-woodpecker/PythonBasic.git）
