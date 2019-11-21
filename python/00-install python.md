@@ -84,3 +84,21 @@
 
 ![类型](../images/06python.png)
 
+	最后执行命令：source ~/.bashrc   这样才会生效
+
+第二种配置环境变量的方法
+
+	
+	PATH=$PATH:/usr/python3.7.3/bin  将这一行路径修改为下面的形式
+	PYTHON_HOME=/usr/python3.7.3
+	PATH=$PATH:$PYTHON_HOME/bin
+
+	如果修改配置文件是在/ect/profile中 这里表示的是整个系统的环境变量配置文件
+	~/.bashrc 表示当前用户的环境变量配置文件,改了第一个会造成其他人的配置文件也会改变,所以一般改第二种
+
+最后安装python3后，在bin目录中可以安装一个Python的工具：iphthon3
+
+	输入命令：pip3 install ipython3  即可
+
+每次修改完配置都要输入命令： source ~/.bashrc  执行以下才算修改成功
+
