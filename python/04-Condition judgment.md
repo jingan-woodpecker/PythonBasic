@@ -46,3 +46,18 @@ else:
 
 print("小明的BMI指数是%.1f"%BMI)
 ```
+
+2、pass的用法
+
+```python
+age = int(input("请输入你的年龄")
+sex = input("请输入你的性别")
+
+if age >= 18 and sex == "男":
+	print("需要做苦力")
+else:
+	pass #以后要填充代码，为了保证不出现语法错误
+```
+3、逻辑运算符
+
+	and    or    not   
