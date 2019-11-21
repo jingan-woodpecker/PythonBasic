@@ -31,3 +31,10 @@
 四、已连接远程仓库，需拉取其它仓库到本地的方式
 
 	输入命令：git clone 仓库地址（例如：https://github.com/jingan-woodpecker/PythonBasic.git）
+
+
+五、如何解决在linux上每次git push都要输入账号密码的问题
+
+	1、先cd到根目录，然后执行git config --global credential.helper store命令
+
+	2、执行完上面的命令后，就可以再次使用git push 提交了，不过第一次还需要密码，第二次提交就不需要了
