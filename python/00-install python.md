@@ -82,5 +82,5 @@
 
 ![设置环境变量](../images/06python.png)
 
-![类型](../images/type.png)
+![类型](../images/06python.png)
 
