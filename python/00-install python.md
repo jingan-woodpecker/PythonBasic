@@ -73,6 +73,12 @@
 	复制好bin目录的路径：比如——/usr/python3.7.3/bin
 	然后进入 vim ~/.bashrc
 
+
 ![环境变量路径](../images/5pythonpath.png)
 
+设置环境变量追加，而不是覆盖原有的path路径
+
+	输入：PATH=$PATH:/usr/python3.7.3/bin  （其中$PATH表示原来的PATH路径,中间用冒号隔开,然后追加一个新的目录）
+
+![设置环境变量](../images/06python.png)
 
