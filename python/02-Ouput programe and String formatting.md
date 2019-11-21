@@ -66,7 +66,23 @@ rising_percentage_point = (now_score-before_score)/now_score*100
 print("小明成绩提升的百分点是：%.1f%%"%(rising_percentage_point))
 ```
 
+4、标示符规则
 
+	*由字母、下划线和数字组成，且数字不能开头
+	*标识符是区分大小写的 ： Arvin != arvin
+
+5、raw_input()
+
+	上面的函数只在python2中有，input()函数在python3和python2中都有,所以使用上面这个函数,文件顶部要先声明
+
+```
+#encoding=UTF-8
+a = raw_input("请输入你的姓名:")
+print(a)
+```
+	
+	在python2中input函数输入的内容作为表达式,而不是字符串,python3中则作为表达式
+	如果python2要想输入作为字符串,则要调用raw_input()
 
 
 
