@@ -75,7 +75,7 @@ print("小明成绩提升的百分点是：%.1f%%"%(rising_percentage_point))
 
 	上面的函数只在python2中有，input()函数在python3和python2中都有,所以使用上面这个函数,文件顶部要先声明
 
-```
+```python
 #encoding=UTF-8
 a = raw_input("请输入你的姓名:")
 print(a)
