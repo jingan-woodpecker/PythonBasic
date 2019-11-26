@@ -70,7 +70,7 @@ print(b)
 当只是b添加了列表[5, 7]后，a也会同时增加列表[5, 7]
 
 #注意:如果是b = b+[5, 7]会先计算b+[5,7]生成一个新的列表，b就会指向一个新的地址，这时a还是等于[1,3,4]
-#针对不可变类型a+=a <> a= a+b
+#针对可变类型a+=a <> a= a+b
 """
 ```
 ![可变类型](../images/dict.png)
@@ -178,6 +178,16 @@ key为sex,value为男
 '''
 ```
 
+	* items() 返回一个包含所有（键，值）元组的列表
+
+```python
+dict = {"name":"zhangsan","sex":"男"}
+
+for item in dict.items():
+	print("key为:%s,value为:%s"%item)
+```
+
+
 ```python
 print("*"*30)
 print("学生名字管理系统".center(50))
@@ -208,7 +218,7 @@ while True:
             if item["name"] == name:
                 print("%s\t%s\t%s\t"%(item["name"],item["age"],item["sex"]))
                 break  #整个循环终止
-        else: #注意这个eles的位置，考虑清楚逻辑错误和语法错误
+        else: #注意这个eles的位置，考虑清楚逻辑错误和语法错误，这里一个学生一个字典，我们要在列表中判断
             print("该学生未找到")
     if operate == "3":
         pass
@@ -236,6 +246,16 @@ while True:
 
 	* 统计字符串中，各个字符的个数
 
+```python
+str = input("请输入字符串")
+res = {}
+
+for i in str:
+	if i in res:
+		res[i] += 1 #字符串的每个字符作为键key，个数作为值value，超过一个则加1
+	else:
+		res[i] = 1
+```
 	* 完成一个路径的组装，先提示用户多次输入路径，最后显示一个完整的路径，比如/home/python/abc/etc-
 
 
