@@ -45,7 +45,7 @@ print(lines01.index("苦短"))
       pop() 默认删除最后一个元素,并把删除的元素返回
       remove() 根据列表的内容进行删除
       
-  ```python
+```python
 lines01 = ["人生", "苦短" , "我要学" , "python"]
 del lines01[3]
 
@@ -57,12 +57,28 @@ lines01.remove("人生")
     * 排序(sort , reverse)
       sort() 是将list按照特定的顺序重新排列，默认为从小到大即升序，参数reverse=True,可改为倒序。
       
-  ```python
+```python
 lines01 = ["人生", "苦短" , "我要学" , "python"]
 lines01.sort(reverse=True)
 print(lines01)
 ``` 
 
+循环列表
+
+```python
+names = ["zs","ls","ww","qxx"]
+for i in names:
+	print(i)
+```
+
+```python
+i = 0
+names = ["zs","ls","ww","qxx"]
+
+while i < len(names):
+	print(names[i])
+	i += 1
+```
 ```python
 print("*"*30)
 print("学生名字管理系统".center(50))
@@ -142,9 +158,24 @@ while k >= 1:
 '''
 ```  
 
+range()函数在不同版本的python中显示效果不一样	
+
+	在python3中range()函数是一个"懒加载"函数，只有调用了才会显示，在python2中直接使用range()
+	不用调用，会直接输出列表结果
+
 ```python
-#只有调用了才会显示里面的元素
-c = range(1 , 10)
+#python2中效果
+>>> c = range(1,10)
+>>> c
+[1,2,3,4,5,6,7,8,9]
 ```
+
+```python
+#python3中的效果,需要调用才会有结果，就是需要用到for循环
+>>> c = range(1,10)
+>>> c
+range(1,10)
+```
+	python2中使用range()函数，如果值特别大，容易造成内存溢出，python3中虽然执行了，但不会获得里面的值，所以不存在这种情况
 
 
