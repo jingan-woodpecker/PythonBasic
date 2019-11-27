@@ -9,7 +9,7 @@
         代码
         
 ```python
-def round_area(r): #形参
+def round_area(r): #形参,把参数当做实际存在的值来用
     s = 3.14*(r**2)
     print("圆的面积是%s"%s)
     return s
@@ -34,6 +34,7 @@ test_sum(a , 10)
 3、函数的返回值
 
     * 下面的函数中没有返回值(return get)即调用函数test_sum(num1,num2)后赋值给s1的是空值，会返回None
+	注意调用函数赋予一个值后，才能打印这个结果，否则报错
 
 ```python
 a = 1
