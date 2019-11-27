@@ -35,6 +35,7 @@ test_sum(a , 10)
 
     * 下面的函数中没有返回值(return get)即调用函数test_sum(num1,num2)后赋值给s1的是空值，会返回None
 	注意调用函数赋予一个值后，才能打印这个结果，否则报错
+	如果本身参数是传数值类型的，结果传了字符串，运行的时候报错，那查看错误信息的时候，看最后一行
 
 ```python
 a = 1
@@ -65,12 +66,14 @@ num2 = 13
 s1 = test_sum(num1,num2)
 print(s1)
 ```   
+	定义了一个函数可能不知道是谁要调用，所以别人无法知道你传的参数是什么类型（整数，字符串等）
+	所以需要在函数前面先加判断,如果你先传的参数是数值类型,就先加判断保证它是数值,如下所示:
 
 ```python
 def test_sum(a , b):
-    if not isinstance(a ,(int ,float)):
+    if not isinstance(a ,(int ,float)):#isinstance()判断是什么类型,加入(int,float)表示传入的参数值只能是整数或浮点数
         print("传入的a是%s,不是数字类型"%a)
-        return
+        return #判断不是数字类型了,后面的代码不需要执行,只需要加上return即可
     elif not isinstance(b ,(int ,float)):
         print("传入的b是%s,不是数字类型"%b)
         return
@@ -121,9 +124,30 @@ print("三个数的和是%s"%s1)
 s2 = average_num(10, 20, 30)
 print("三个数的平均值是：%s"%s2)
 ```
+```python
+#求三个数的平均数
+ 
+ def avgSum(a,b,c):
+   #如果调用的函数返回结果是True和False，则可以作为if后面的条件表达式进行判断
+   if is_number(a) and is_number(b) and is_number(c):
+     avg_result = (a+b+c)/3
+     return avg_result
+   else:
+     print("无法计算平均值")
+ 
+ def is_number(a):
+   if not isinstance(a,(int,float)):
+     print("输入的数值%s,不是数值或浮点数"%a)
+     return False
+   else:
+     return True
+ 
+ avg = avgSum(10,80,20)
+ print(avg)
+```
 
 了解代码的执行顺序
 
     比如上述代码：先执行def three_sum(a, b, c),但只是先加载并不执行里面的内容，然后执行def average_num(a, b, c)
-    也只是加载，接着执行s1 = three_sum(3, 5, 5)因为调用了上面的函数也先加载了，所以不会报错，然后就会执行函数里面的代码
+    也只是加载，接着执行s1 = (3, 5, 5)因为调用了上面的函数也先加载了，所以不会报错，然后就会执行函数里面的代码
     ...
