@@ -123,3 +123,34 @@ test1()
         
         对于可变类型的全局变量来说，因其指向的数据可以修改，所以不使用global时也可修改全局变量。
 
+全局变量可以定义在哪里？
+
+	定义在"调用"函数之前，不一定在函数之前
+
+```python
+ name = ["zhangsan","lisi","jingan"]
+ info = {"name":"wangwu","sex":"男","age":25}
+ a = 100
+ b = "test_global"  #如果函数内重新被定义了新的引用，这个则会被回收
+ 
+ def test():
+ 
+   name.append("jieli")
+   name[1] = "qianxuexun"
+   a = 200  #不可变类型在函数内，不可修改全局变量的值
+   global b #要想在函数内修改不可变类型的值，需要加上global
+   b = "test01_global"
+ 
+ test()
+ print("name的值是%s"%name)
+ print("info的值是%s"%info)
+ print("a的值是%s"%a)
+ print("b的值是%s"%b)
+ 
+ '''
+ 总结；在函数中修改全局变量，1.如果是可变类型可以修改变量的值，2.如果全局变量是不可变类型
+ 想要在函数中修改不可变类型，本质上是修改不可变类型的全局变量的引用，加上global就可以修改
+ 不可变变量
+ '''
+	
+```
