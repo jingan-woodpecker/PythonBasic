@@ -29,7 +29,7 @@
     open(文件名，访问模式)
     
 ```python
-#当前目录下新建一个.txt文件
+#当前目录下新建一个.txt文件(注意：最好创建一个文件时指定存放的目录位置，不然不知道存放在哪个位置)
 file = open("test.txt","w")
 #关闭文件
 file.close()
@@ -72,7 +72,7 @@ source_file = "D:\pip\pip-18.0.tar.gz"
 dest_file = "copy-"+ source_file[source_file.rfind("\\")+1:]
 print("目标文件的名字为：%s"%(dest_file))
 
-#打开压缩文件，用rb,wb 模式
+#打开压缩文件，用rb,wb 模式(注意:不是打开压缩文件，仅仅是打开文本文件可以直接使用r,w模式)
 source_f = open(source_file, "rb")
 dest_f = open(dest_file, "wb")
 
