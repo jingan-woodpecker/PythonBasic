@@ -72,11 +72,17 @@ import sys
 #查找某个目录中包含hello的.py文件有哪些
 file_list = []
 def find_hello(parent_dir , file_name):
+		#连接目录和文件名
     file_abspath = os.path.join(parent_dir , file_name)
+		#判断上面指定连接的还是目录，就进入循环
     if os.path.isdir(file_abspath):
+				#遍历出该目录下的所有目录和文件，形成一个列表
         for f in os.listdir(file_abspath):
+						#递归遍历，直到不是目录
             find_hello(file_abspath , f)
+
     else:
+		#如果上面连接的目录直接就是.py结尾的文件就调用其他函数
         if file_abspath.endswith(".py"):
             if read_and_find_hello(file_abspath):
                 file_list.append(file_abspath)
