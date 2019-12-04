@@ -9,7 +9,7 @@
 ```python
 # 定义一个类
 class Person():
-
+	#具有相同属性和行为的对象可以抽象出一个类,人可以休息/工作就是相同属性
     def sleep(self):
         print("人类可以休息")
 
