@@ -67,8 +67,8 @@ p1.info()
     
 3、理解self
 
-    self表示：调用这个方法本身的对象
-        比如：上述的p1.Person()其中p1就表示这个self
+    self表示：调用这个方法本身的对象(那个对象调用，就用那个对象本身)
+        比如：上述的p1.Person()其中p1就表示这个self，p2.Person()其中p1就是表示这个self
         
 ```python
 # 定义一个类
@@ -76,6 +76,7 @@ class Animal:
 
     # 方法
     def __init__(self, name):
+				#第一个name是属性名字，第二个name是形参，方法里面一定要有默认传参self
         self.name = name
 
     def printName(self):
