@@ -78,6 +78,7 @@ class Person():
     def person_info(self):
         print("输入信息为：我的名字叫%s,今年%s岁了"%(self.name , self.age))
 
+	#上面的两种结果一种是返回数据，一种是打印，注意返回时，不用加print
 p1 = Person("王武" , 24)
 print(p1)
 ```
