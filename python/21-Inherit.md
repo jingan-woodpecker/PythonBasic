@@ -19,6 +19,7 @@ class Dog(Animal):
     def shout(self):
         print("汪汪汪")
 #属性的继承，实际上也是方法的继承
+#继承对象的属性本质上是因为调用了父类的init方法才继承了对象的共有属性
 p1 = Dog()
 p1.sleep()
 
